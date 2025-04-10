@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import { Button, Grid, TextField } from "@mui/material"
 
-const AddTodo = (props) => {
+const AddTodo = (props) => { //props 부모가 넘겨준 데이터
     // 사용자의 입력을 저장할 오브젝트
     const [item, setItem] = useState({ title: ""});
-    const addItem = props.addItem;
+    const addItem = props.addItem; //addItem의 AddTodo(부모)가 넘겨줌
 
     // onButtonClick 함수
     const onButtonClick = () => {
