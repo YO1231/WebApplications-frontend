@@ -1,11 +1,28 @@
 import './App.css';
 import Todo from './Todo';
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, List, Paper } from '@mui/material';
 import AddTodo from './AddTodo';
+import { API_BASE_URL } from './api-config';
 
 function App() { //할 일 관리
   const [items, setItems] = useState([]);
+
+  useEffect( () => {
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    };
+  
+    fetch(API_BASE_URL + "/todo", requestOptions)
+      .then((response) => response.json()) //성공 시
+      .then(
+        (response) => {
+          setItems(response.data);
+        },
+      )
+      .catch( (e) => { }) //더 많이 쓰이는 방법
+  },[]);
 
   const addItem = (item) => {
     item.id = "ID-" + items.length; // key를 위한 id
