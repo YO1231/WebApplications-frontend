@@ -20,7 +20,7 @@ const AddTodo = (props) => { //props 부모가 넘겨준 데이터
 
     // enterKeyEventHandller 함수
     const enterKeyEventHandller = (e) => {
-        if (e.key == 'Enter') {
+        if (e.key === 'Enter') {
             onButtonClick();
         }
     };
